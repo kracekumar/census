@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "code_census"
-version = "0.0.1"
+version = "0.0.2"
 description = "A command line tool to collect, organize, report code metrics."
 authors = ["Kracekumar <me@kracekumar.com>"]
 license = "MIT"
@@ -21,6 +21,9 @@ lxml = "^4.6.3"
 black = "^21.8b0"
 mypy = "^0.910"
 taskipy = "^1.8.1"
+mkdocs = "^1.2.2"
+mkdocs-material = "^7.2.6"
+mkdocs-click = "^0.4.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -28,3 +31,12 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.taskipy.tasks]
 mypy_report = "mypy --config-file=pyproject.toml . --html-report ."
+docs_serve = "mkdocs serve"
+docs_build = "mkdocs build"
+
+[tool.poetry.scripts]
+census = "code_census.cli:cli"
+code_census = "code_census.cli:cli"
+
+[tool.poetry]
+include = ["alembic.ini", "alembic"]

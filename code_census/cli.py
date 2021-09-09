@@ -1,6 +1,7 @@
 """CLI
 """
 import click
+import sqlalchemy
 from pathlib import Path
 import os
 import sys
@@ -23,22 +24,29 @@ from alembic.config import Config
 from alembic import command
 from rich.console import Console
 from rich.table import Table
+import os
+import json
 
 
 HELP_TEXT = {
-    "db_url": 'Set DB URL as environment variable like DB_URL="postgres://postgres:pass@db.host:5432/somedb".'
+    "db_url": (
+        "Pass postgres connection details like postgresql://postgres:pass@db.host:5432/code_census or "
+        'Set DB URL as environment variable like DB_URL="postgresql://postgres:pass@db.host:5432/code_census".'
+    )
 }
 
 error_console = Console(stderr=True, style="bold red")
 info_console = Console(style="black green")
 
 
+def set_db_url(url):
+    os.environ['DB_URL'] = url
+
+
 class JSONType(click.ParamType):
     name = "json"
 
     def convert(self, value, param, ctx):
-        import json
-
         if isinstance(value, (dict, list)):
             return value
         try:
@@ -60,7 +68,7 @@ def mypy():
     pass
 
 
-@mypy.group()
+@cli.group()
 def project():
     pass
 
@@ -73,6 +81,7 @@ def project():
     "--db-url", type=str, required=True, envvar="DB_URL", help=HELP_TEXT["db_url"]
 )
 def create(name: str, description: str, url: str, db_url: str):
+    set_db_url(db_url)
     name = name.strip()
     session = create_session(db_url, echo=False)
     project = get_project(session, name=name)
@@ -92,6 +101,7 @@ def create(name: str, description: str, url: str, db_url: str):
     "--db-url", type=str, required=True, envvar="DB_URL", help=HELP_TEXT["db_url"]
 )
 def all(db_url):
+    set_db_url(db_url)
     session = create_session(db_url, echo=False)
     projects = get_projects(session)
     table = formatter.format_projects(projects)
@@ -119,6 +129,7 @@ def add(
     db_url: str,
     log=True,
 ):
+    set_db_url(db_url)
     name = project_name.strip()
     session = create_session(db_url, echo=log)
     project = get_project(session=session, name=project_name)
@@ -154,6 +165,7 @@ def add(
 )
 @click.argument("run_id", type=int)
 def get_info(db_url: str, run_id: int):
+    set_db_url(db_url)
     session = create_session(db_url, echo=False)
     items = get_mypy_line_items_by_run_id(session=session, run_id=run_id)
 
@@ -171,6 +183,7 @@ def get_info(db_url: str, run_id: int):
 )
 @click.argument("project_name", type=str)
 def all(db_url: str, project_name: str):
+    set_db_url(db_url)
     session = create_session(db_url, echo=False)
     project_name = project_name.strip()
     project = get_project(session, name=project_name)
@@ -194,15 +207,23 @@ def all(db_url: str, project_name: str):
     info_console.print(table)
 
 
+@cli.command()
 @click.option(
     "--db-url", type=str, required=True, envvar="DB_URL", help=HELP_TEXT["db_url"]
 )
 def create_db(db_url: str):
-    engine = create_engine(db_url, echo=True)
+    echo = os.getenv("DB_ECHO", False)
+    set_db_url(db_url)
+    engine = create_engine(db_url, echo=echo)
     cfg = Config("alembic.ini")
     with engine.begin() as connection:
         cfg.attributes["connection"] = connection
-        command.upgrade(cfg, "head", sql=True)
+        try:
+            command.upgrade(cfg, "head")
+            info_console.print(":white_check_mark: The schema for census app is created")
+        except sqlalchemy.exc.ProgrammingError as exc:
+            error_console.print(":x: Failed to create schema :x:")
+            error_console.print(str(exc))
 
 
 if __name__ == "__main__":
