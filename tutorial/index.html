@@ -1,0 +1,987 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+    
+    
+      
+        <title>Tutorial - Documentation for Code Census Project</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.802231af.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-create-a-new-database" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Documentation for Code Census Project" class="md-header__button md-logo" aria-label="Documentation for Code Census Project" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Documentation for Code Census Project
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tutorial
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Documentation for Code Census Project" class="md-nav__button md-logo" aria-label="Documentation for Code Census Project" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Documentation for Code Census Project
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Welcome to Code Census
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/" class="md-nav__link">
+        Commands
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Tutorial
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Tutorial
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-create-a-new-database" class="md-nav__link">
+    1. Create a new database
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Create a new database">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#createdb" class="md-nav__link">
+    Createdb
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-the-new-database" class="md-nav__link">
+    Verify the new database
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-fill-the-database" class="md-nav__link">
+    2. Fill the database
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Fill the database">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-tables" class="md-nav__link">
+    Create tables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-new-project" class="md-nav__link">
+    Create a new project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project-all-command" class="md-nav__link">
+    project all command
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-mypy-run-report" class="md-nav__link">
+    Upload mypy run report
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-the-artifact" class="md-nav__link">
+    Upload the artifact
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view-the-run-details-in-terminal" class="md-nav__link">
+    View the run details in terminal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#display-all-run-details-for-the-project" class="md-nav__link">
+    Display all run details for the project
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-create-dashboard" class="md-nav__link">
+    3. Create dashboard
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Create dashboard">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metabase" class="md-nav__link">
+    Metabase
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1-start" class="md-nav__link">
+    Step 1 - Start
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-add-database" class="md-nav__link">
+    Step 2 - Add Database
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-select-database" class="md-nav__link">
+    Step 3 - Select Database
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-table-view" class="md-nav__link">
+    Step 4 - Table View
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-browse-data" class="md-nav__link">
+    Step 5 - Browse Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-sql-query" class="md-nav__link">
+    Step 6 - SQL Query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-7-visualization" class="md-nav__link">
+    Step 7 - Visualization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-8-question" class="md-nav__link">
+    Step 8 - Question
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-9-add-to-dashboard" class="md-nav__link">
+    Step 9 - Add to dashboard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-10-new-dashboard" class="md-nav__link">
+    Step 10 - New Dashboard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-11-save-dashboard" class="md-nav__link">
+    Step 11 - Save Dashboard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-12-dashboard" class="md-nav__link">
+    Step 12 - Dashboard
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-create-a-new-database" class="md-nav__link">
+    1. Create a new database
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Create a new database">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#createdb" class="md-nav__link">
+    Createdb
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-the-new-database" class="md-nav__link">
+    Verify the new database
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-fill-the-database" class="md-nav__link">
+    2. Fill the database
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Fill the database">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-tables" class="md-nav__link">
+    Create tables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-new-project" class="md-nav__link">
+    Create a new project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project-all-command" class="md-nav__link">
+    project all command
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-mypy-run-report" class="md-nav__link">
+    Upload mypy run report
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-the-artifact" class="md-nav__link">
+    Upload the artifact
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view-the-run-details-in-terminal" class="md-nav__link">
+    View the run details in terminal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#display-all-run-details-for-the-project" class="md-nav__link">
+    Display all run details for the project
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-create-dashboard" class="md-nav__link">
+    3. Create dashboard
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Create dashboard">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metabase" class="md-nav__link">
+    Metabase
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1-start" class="md-nav__link">
+    Step 1 - Start
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-add-database" class="md-nav__link">
+    Step 2 - Add Database
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-select-database" class="md-nav__link">
+    Step 3 - Select Database
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-table-view" class="md-nav__link">
+    Step 4 - Table View
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-browse-data" class="md-nav__link">
+    Step 5 - Browse Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-sql-query" class="md-nav__link">
+    Step 6 - SQL Query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-7-visualization" class="md-nav__link">
+    Step 7 - Visualization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-8-question" class="md-nav__link">
+    Step 8 - Question
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-9-add-to-dashboard" class="md-nav__link">
+    Step 9 - Add to dashboard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-10-new-dashboard" class="md-nav__link">
+    Step 10 - New Dashboard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-11-save-dashboard" class="md-nav__link">
+    Step 11 - Save Dashboard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-12-dashboard" class="md-nav__link">
+    Step 12 - Dashboard
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Tutorial</h1>
+                
+                <p>In this tutorial, you will learn, how to use <code>census</code> project to track mypy coverage.</p>
+<p>After installing the <code>code_census</code>, you need to follow three steps.</p>
+<ol>
+<li>Create a postgres database to track metrics.</li>
+<li>Fill the database with necessary details to track the project metrics.</li>
+<li>Set up UI to view results in your favorite tool.</li>
+</ol>
+<h2 id="1-create-a-new-database">1. Create a new database</h2>
+<h3 id="createdb">Createdb</h3>
+<p>After installing <a href="https://www.postgresql.org/">PostgreSQL</a>, create a new database. Here I'm using <code>createdb</code> command,
+please use your preferred way to create a database.</p>
+<p><code>$createdb census</code></p>
+<h3 id="verify-the-new-database">Verify the new database</h3>
+<pre><code>$psql -h localhost -d census
+psql (13.3, server 13.4)
+Type &quot;help&quot; for help.
+
+census=#
+census=# \dt
+Did not find any relations.
+</code></pre>
+<p>The <code>psql</code> successfully logged in the database and database is empty.</p>
+<h2 id="2-fill-the-database">2. Fill the database</h2>
+<h3 id="create-tables">Create tables</h3>
+<p>You can access <code>code_census</code> CLI interface via <code>census</code> or <code>code_census</code> command.</p>
+<pre><code class="language-bash">$census
+Usage: census [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  create-db
+  mypy
+  project
+</code></pre>
+<p><code>census</code> command help section shows three commands, let's run <code>create-db</code> to create tables.</p>
+<p><em>Note</em>: <code>create-db</code> does not create a new database but creates tables.</p>
+<p>To create tables you need to pass the database credentials.</p>
+<pre><code class="language-bash">$census create-db --db-url postgresql://:@localhost:5432/census
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -&gt; cc7054b42c18, Add initial tables
+/private/tmp/venv/lib/python3.9/site-packages/sqlalchemy/sql/base.py:415: SAWarning: Can't validate argument 'max_length'; can't locate any SQLAlchemy dialect named 'max'
+  util.warn(
+✅ The schema for census app is created
+</code></pre>
+<p>Now the census database is filled with tables.</p>
+<pre><code class="language-bash">$psql -h localhost -d census
+psql (13.3, server 13.4)
+Type &quot;help&quot; for help.
+census=# \dt
+            List of relations
+ Schema |      Name       | Type  | Owner
+--------+-----------------+-------+-------
+ public | alembic_version | table | user
+ public | mypyrunlineitem | table | user
+ public | project         | table | user
+ public | run             | table | user
+(4 rows)
+</code></pre>
+<p><em>Note</em>: Wherever you're using <code>--db-url</code>, the same argument can be passed as environment variable <code>DB_URL</code>.</p>
+<h3 id="create-a-new-project">Create a new project</h3>
+<p>Let's see project command documentation.</p>
+<pre><code class="language-bash">$census project --help
+Usage: census project [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  all
+  create
+</code></pre>
+<p>Now let's see <code>project create</code> command documentation.</p>
+<pre><code class="language-bash">$census project create --help
+Usage: census project create [OPTIONS] NAME
+
+Options:
+  --description TEXT
+  --url TEXT
+  --db-url TEXT       Pass postgres connection details like
+                      postgresql://postgres:pass@db.host:5432/code_census or
+                      Set DB URL as environment variable like DB_URL=&quot;postgres
+                      ql://postgres:pass@db.host:5432/code_census&quot;.
+                      [required]
+  --help              Show this message and exit.
+</code></pre>
+<p><code>create</code> command takes in mandatory <code>NAME</code>, optional <code>--description, --url, --db-url</code>.
+Let's create a project for <code>code_census</code>.</p>
+<pre><code class="language-bash">$census project create code_census --description &quot;A CLI tool to track code metrics&quot; --url &quot;https://github.com/kracekumar/code_census&quot; --db-url postgresql://:@localhost:5432/census
+Project created. project=&lt;Project(id=2, name=code_census, description=A CLI tool to track code metrics)&gt;
+</code></pre>
+<p>Now the project is successfully created.</p>
+<h3 id="project-all-command">project all command</h3>
+<pre><code class="language-bash">$census project all --db-url postgresql://:@localhost:5432/census
+                                             Projects
+┏━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ ID ┃ Name        ┃ Description                      ┃ URL                                       ┃
+┡━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ 1  │ code_census │ A CLI tool to track code metrics │ https://github.com/kracekumar/code_census │
+└────┴─────────────┴──────────────────────────────────┴───────────────────────────────────────────┘
+</code></pre>
+<p><code>all</code> sub-command displays all the projects.</p>
+<h3 id="upload-mypy-run-report">Upload mypy run report</h3>
+<p><em>Note</em>: mypy report can be generated using <code>--html-report</code> flag like <code>mypy --config-file=pyproject.toml . --html-report /tmp/code_census</code></p>
+<pre><code class="language-bash">$census --help
+Usage: census [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  create-db
+  mypy
+  project
+</code></pre>
+<p>We have used <code>create-db</code> and <code>mypy</code> command and now it's time to use mypy command.</p>
+<p>Let's see the <code>mypy</code> sub-command documentation</p>
+<pre><code class="language-bash">$census mypy --help
+Usage: census mypy [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  run
+</code></pre>
+<p><code>mypy</code> sub-command has one more sub-command <code>run</code>.</p>
+<pre><code class="language-bash">$census mypy run --help
+Usage: census mypy run [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  add
+  all
+  get-info
+</code></pre>
+<p><code>run</code> has further three sub-commands, <code>add, all, get-info</code>. Let's see the documentation for add command.</p>
+<pre><code class="language-bash">$census mypy run add --help
+Usage: census mypy run add [OPTIONS] PROJECT_NAME
+
+Options:
+  --artifact-url TEXT
+  --run-info JSON
+  --mypy-coverage-file PATH  [required]
+  --db-url TEXT              Pass postgres connection details like postgresql:
+                             //postgres:pass@db.host:5432/code_census or Set
+                             DB URL as environment variable like DB_URL=&quot;postg
+                             resql://postgres:pass@db.host:5432/code_census&quot;.
+                             [required]
+  --help                     Show this message and exit.
+</code></pre>
+<h3 id="upload-the-artifact">Upload the artifact</h3>
+<p>Now that mypy coverage report is available, let's upload the coverage info.</p>
+<pre><code class="language-bash">$census mypy run add  code_census --run-info '{&quot;git&quot;: {&quot;commit&quot;: &quot;0c9b759639ed4025522370b81ade06d1efa64bed&quot;, &quot;version&quot;: &quot;0.0.8&quot;}}' --mypy-coverage-file code_census/index.html --db-url postgresql://:@localhost:5432/census
+Created a new run=&lt;Run(id=1, project_name=code_census)
+Added 7 file coverages
+</code></pre>
+<p>We passed on following information to the <code>add</code> sub-command.</p>
+<ul>
+<li>project name: <code>code_census</code></li>
+<li><code>--run-info</code> is a JSON data details of the run and project. Here <code>git</code> JSON object contains <code>commit</code> and <code>version</code>.</li>
+<li><code>--mypy-coverage-file</code> path to coverage file <code>index.html</code>.</li>
+<li><code>--db-url</code> database details</li>
+</ul>
+<h3 id="view-the-run-details-in-terminal">View the run details in terminal</h3>
+<p>Now to view the run details, we can use <code>get-info</code> sub-command. Let's see the documentation</p>
+<pre><code class="language-bash">$census mypy run get-info --help
+Usage: census mypy run get-info [OPTIONS] RUN_ID
+
+Options:
+  --db-url TEXT  Pass postgres connection details like
+                 postgresql://postgres:pass@db.host:5432/code_census or Set DB
+                 URL as environment variable like
+                 DB_URL=&quot;postgresql://postgres:pass@db.host:5432/code_census&quot;.
+                 [required]
+  --help         Show this message and exit.
+</code></pre>
+<p>We know the run id, it's <code>1</code>.</p>
+<pre><code class="language-bash">$census mypy run get-info 1 --db-url postgresql://:@localhost:5432/census
+               Mypy Coverage for Run ID: 1
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━┓
+┃ File                            ┃ Imprecision ┃ Lines ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━┩
+│ cc7054b42c18_add_initial_tables │ 64.0 %      │ 75    │
+│ code_census                     │ 0.0 %       │ 3     │
+│ code_census.cli                 │ 38.96 %     │ 231   │
+│ code_census.formatter           │ 17.07 %     │ 41    │
+│ code_census.models              │ 40.98 %     │ 122   │
+│ code_census.mypy_utils          │ 28.07 %     │ 57    │
+│ env                             │ 35.37 %     │ 82    │
+│ --                              │ --          │ --    │
+│ Summary                         │ 32.06 %     │ 611   │
+│ --                              │ --          │ --    │
+└─────────────────────────────────┴─────────────┴───────┘
+</code></pre>
+<p>Now the get-info command prints all the mypy coverage in the <code>code_census</code> file.</p>
+<h3 id="display-all-run-details-for-the-project">Display all run details for the project</h3>
+<pre><code class="language-bash">$census mypy run all code_census  --db-url postgresql://:@localhost:5432/census
+                                                  All runs for project: code_census
+┏━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┓
+┃ ID ┃ Created At                 ┃ Run Info                                                                            ┃ Line Items ┃
+┡━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━┩
+│ 1  │ 2021-09-09 16:48:24.865040 │ {'git': {'commit': '0c9b759639ed4025522370b81ade06d1efa64bed', 'version': '0.0.8'}} │ 7          │
+└────┴────────────────────────────┴─────────────────────────────────────────────────────────────────────────────────────┴────────────┘
+</code></pre>
+<h2 id="3-create-dashboard">3. Create dashboard</h2>
+<p>To view all the runs data and how the coverage is moving, we can use charts. There are different solutions like <a href="https://superset.apache.org/">Apache Superset</a>, <a href="https://www.metabase.com/">Metabase</a>, etc ...</p>
+<h3 id="metabase">Metabase</h3>
+<p>Metabase uses <a href="https://www.metabase.com/docs/latest/users-guide/04-asking-questions.html">questions</a> and <a href="https://www.metabase.com/docs/latest/users-guide/07-dashboards.html">dashboards</a> to visualize and understand the data.</p>
+<p>We will be creating a question and the add the question to the dashboard.</p>
+<p>After logging into the metabase as an admin, go to <code>Settings -&gt; Admin</code>.</p>
+<h3 id="step-1-start">Step 1 - Start</h3>
+<p>From the top-bar, click on <code>Databases</code>.</p>
+<p><img alt="Select Database" src="../images/metabase/0-select-databases.png" /></p>
+<h3 id="step-2-add-database">Step 2 - Add Database</h3>
+<p>Click <code>Add Database</code> button and add the connection details (metabase does not allow empty username and password).</p>
+<p><img alt="Add Database" src="../images/metabase/1-add-database.png" /></p>
+<p>After adding the details, from settings click <code>exit admin</code>.</p>
+<h3 id="step-3-select-database">Step 3 - Select Database</h3>
+<p>In the home screen, select <code>census</code> database.</p>
+<p><img alt="Home Page" src="../images/metabase/2-home-page.png" /></p>
+<h3 id="step-4-table-view">Step 4 - Table View</h3>
+<p>After clicking the <code>census</code>, the tables are displayed.</p>
+<p><img alt="Tables" src="../images/metabase/3-census-tables.png" /></p>
+<h3 id="step-5-browse-data">Step 5 - Browse Data</h3>
+<p>Click on the table, <code>mypyrunlineitem</code>. The page shows all the rows in the table.</p>
+<p><img alt="Mypy Table" src="../images/metabase/4-mypyrunlineitem.png" /></p>
+<h3 id="step-6-sql-query">Step 6 - SQL Query</h3>
+<p>Now let's write a simple SQL query to get the <code>imprecision</code> by run.</p>
+<p><img alt="Ask Question" src="../images/metabase/4.1-ask-question-options.png" /></p>
+<p>In the SQL editor, type the query, <code>select run_id, avg(imprecision) as imprecision from mypyrunlineitem group by run_id;</code>.
+You will see the results with two columns <code>run_id, imprecision</code>.</p>
+<p><img alt="Query Result" src="../images/metabase/5-query-result.png" /></p>
+<h3 id="step-7-visualization">Step 7 - Visualization</h3>
+<p>Now select the visualization tab in the lower left bar. Select the chart as <code>Line Chart</code> and X-axis as <code>run_id</code> and Y-axis as <code>imprecision</code>.</p>
+<p><img alt="Visualization" src="../images/metabase/6-visulalization.png" /></p>
+<h3 id="step-8-question">Step 8 - Question</h3>
+<p>Now Click on the <code>save</code> button on the right corner. Enter the details as show in the image and save the question.</p>
+<p><img alt="Save Question" src="../images/metabase/7-save-question.png" /></p>
+<h3 id="step-9-add-to-dashboard">Step 9 - Add to dashboard</h3>
+<p>Click <code>Yes please!</code> in the next dialog box for the question, <code>Saved! Add this to dashboard?</code>.</p>
+<p><img alt="Add Dashboard" src="../images/metabase/8-add-to-dashboard.png" /></p>
+<h3 id="step-10-new-dashboard">Step 10 - New Dashboard</h3>
+<p>Enter the new dashboard details as show in the image.</p>
+<p><img alt="Coverage Dashboard" src="../images/metabase/9-mypy-coverage-dashboard.png" /></p>
+<h3 id="step-11-save-dashboard">Step 11 - Save Dashboard</h3>
+<p>Click on the <code>Save</code> button on the right corner to save the dashboard.</p>
+<p><img alt="Dashboard Save" src="../images/metabase/10-dashboard-save.png" /></p>
+<h3 id="step-12-dashboard">Step 12 - Dashboard</h3>
+<p>Finally dashboard contains one question.</p>
+<p>Now you can create more questions and add to the dashboard and have a view of your project!</p>
+<p><img alt="Dashboard View" src="../images/metabase/11-dashboard-view.png" /></p>
+<p><em>Note</em>: All the screenshots are taken from the metabase Mac App, the interface and menus may look different.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../reference/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Commands" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Commands
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.756773cc.min.js"></script>
+      
+    
+  </body>
+</html>
