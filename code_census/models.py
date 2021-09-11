@@ -94,7 +94,9 @@ def add_run(session, project: Project, artifact_url: str, run_info: dict) -> Run
     return run
 
 
-def add_mypy_line_item(session, project: Project, run: Run, file_summary: FileSummary) -> MypyRunLineItem:
+def add_mypy_line_item(
+    session, project: Project, run: Run, file_summary: FileSummary
+) -> MypyRunLineItem:
     item = MypyRunLineItem(
         project=project,
         run=run,

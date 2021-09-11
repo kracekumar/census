@@ -40,7 +40,7 @@ info_console = Console(style="black green")
 
 
 def set_db_url(url: str) -> None:
-    os.environ['DB_URL'] = url
+    os.environ["DB_URL"] = url
 
 
 class JSONType(click.ParamType):
@@ -61,20 +61,17 @@ class JSONType(click.ParamType):
 
 @click.group()
 def cli() -> None:
-    """All command line entry point for the project.
-    """
+    """All command line entry point for the project."""
 
 
 @cli.group()
 def mypy() -> None:
-    """mypy specific sub-commands.
-    """
+    """mypy specific sub-commands."""
 
 
 @cli.group()
 def project():
-    """Project specific sub-commands.
-    """
+    """Project specific sub-commands."""
 
 
 @project.command()
@@ -108,8 +105,7 @@ def create(name: str, description: str, url: str, db_url: str) -> None:
     "--db-url", type=str, required=True, envvar="DB_URL", help=HELP_TEXT["db_url"]
 )
 def all(db_url):
-    """Displays all the projects in the database.
-    """
+    """Displays all the projects in the database."""
     set_db_url(db_url)
     session = create_session(db_url, echo=False)
     projects = get_projects(session)
@@ -119,8 +115,7 @@ def all(db_url):
 
 @mypy.group()
 def run():
-    """mypy specific run sub-commands.
-    """
+    """mypy specific run sub-commands."""
 
 
 @run.command()
@@ -139,8 +134,7 @@ def add(
     db_url: str,
     log=False,
 ):
-    """Add run details.
-    """
+    """Add run details."""
     set_db_url(db_url)
     name = project_name.strip()
     session = create_session(db_url, echo=log)
@@ -177,8 +171,7 @@ def add(
 )
 @click.argument("run_id", type=int)
 def get_info(db_url: str, run_id: int):
-    """Get run info
-    """
+    """Get run info"""
     set_db_url(db_url)
     session = create_session(db_url, echo=False)
     items = get_mypy_line_items_by_run_id(session=session, run_id=run_id)
@@ -197,8 +190,7 @@ def get_info(db_url: str, run_id: int):
 )
 @click.argument("project_name", type=str)
 def all(db_url: str, project_name: str):
-    """Display all the runs for the project.
-    """
+    """Display all the runs for the project."""
     set_db_url(db_url)
     session = create_session(db_url, echo=False)
     project_name = project_name.strip()
@@ -228,8 +220,7 @@ def all(db_url: str, project_name: str):
     "--db-url", type=str, required=True, envvar="DB_URL", help=HELP_TEXT["db_url"]
 )
 def create_db(db_url: str):
-    """Create all the tables required for the project using alembic migrations.
-    """
+    """Create all the tables required for the project using alembic migrations."""
     echo = os.getenv("DB_ECHO", False)
     set_db_url(db_url)
     engine = create_engine(db_url, echo=echo)
@@ -239,7 +230,9 @@ def create_db(db_url: str):
         cfg.attributes["connection"] = connection
         try:
             command.upgrade(cfg, "head")
-            info_console.print(":white_check_mark: The schema for census app is created")
+            info_console.print(
+                ":white_check_mark: The schema for census app is created"
+            )
         except sqlalchemy.exc.ProgrammingError as exc:
             error_console.print(":x: Failed to create schema :x:")
             error_console.print(str(exc))

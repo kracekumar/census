@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "code_census"
-version = "0.0.9"
+version = "0.0.10"
 description = "A command line tool to collect, organize, report code metrics."
 authors = ["Kracekumar <me@kracekumar.com>"]
 license = "MIT"
@@ -25,6 +25,7 @@ taskipy = "^1.8.1"
 mkdocs = "^1.2.2"
 mkdocs-material = "^7.2.6"
 mkdocs-click = "^0.4.0"
+pre-commit = "^2.15.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
