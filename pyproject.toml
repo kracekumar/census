@@ -1,10 +1,22 @@
 [tool.poetry]
 name = "code_census"
-version = "0.0.10"
+version = "0.0.12"
 description = "A command line tool to collect, organize, report code metrics."
 authors = ["Kracekumar <me@kracekumar.com>"]
 license = "MIT"
+readme = "README.md"
+repository = "https://github.com/kracekumar/code_census"
 include = ["code_census/alembic.ini", "README.md"]
+homepage = "https://kracekumar.github.io/code_census/"
+documentation = "https://kracekumar.github.io/code_census/"
+keywords = ["CLI", "mypy", "developer-tools", "code-quality", "metrics"]
+classifiers = [
+    "Topic :: Development Status :: 2 - Pre-Alpha",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/kracekumar/code_census/issues"
 
 [tool.poetry.dependencies]
 python = "^3.9"
