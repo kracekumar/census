@@ -30,8 +30,8 @@ import json
 
 HELP_TEXT = {
     "db_url": (
-        "Pass postgres connection details like postgresql://postgres:pass@db.host:5432/code_census or "
-        'Set DB URL as environment variable like DB_URL="postgresql://postgres:pass@db.host:5432/code_census".'
+        "Pass postgres connection details like postgresql://postgres:pass@db.host:5432/census or "
+        'Set DB URL as environment variable like DB_URL="postgresql://postgres:pass@db.host:5432/census".'
     )
 }
 
@@ -39,7 +39,7 @@ error_console = Console(stderr=True, style="bold red")
 info_console = Console(style="black green")
 
 
-def set_db_url(url):
+def set_db_url(url: str) -> None:
     os.environ['DB_URL'] = url
 
 
@@ -51,6 +51,7 @@ class JSONType(click.ParamType):
             return value
         try:
             converted_value = json.loads(value)
+            return converted_value
         except json.decoder.JSONDecodeError:
             self.fail(f"{value=} is not a valid JSON"), param, ctx
 
@@ -59,18 +60,21 @@ class JSONType(click.ParamType):
 
 
 @click.group()
-def cli():
-    pass
+def cli() -> None:
+    """All command line entry point for the project.
+    """
 
 
 @cli.group()
-def mypy():
-    pass
+def mypy() -> None:
+    """mypy specific sub-commands.
+    """
 
 
 @cli.group()
 def project():
-    pass
+    """Project specific sub-commands.
+    """
 
 
 @project.command()
@@ -80,7 +84,10 @@ def project():
 @click.option(
     "--db-url", type=str, required=True, envvar="DB_URL", help=HELP_TEXT["db_url"]
 )
-def create(name: str, description: str, url: str, db_url: str):
+def create(name: str, description: str, url: str, db_url: str) -> None:
+    """Create a new project with the given details. If the name already exists,
+    the project creation is skipped.
+    """
     set_db_url(db_url)
     name = name.strip()
     session = create_session(db_url, echo=False)
@@ -101,6 +108,8 @@ def create(name: str, description: str, url: str, db_url: str):
     "--db-url", type=str, required=True, envvar="DB_URL", help=HELP_TEXT["db_url"]
 )
 def all(db_url):
+    """Displays all the projects in the database.
+    """
     set_db_url(db_url)
     session = create_session(db_url, echo=False)
     projects = get_projects(session)
@@ -110,7 +119,8 @@ def all(db_url):
 
 @mypy.group()
 def run():
-    pass
+    """mypy specific run sub-commands.
+    """
 
 
 @run.command()
@@ -127,8 +137,10 @@ def add(
     run_info: dict,
     mypy_coverage_file: click.Path,
     db_url: str,
-    log=True,
+    log=False,
 ):
+    """Add run details.
+    """
     set_db_url(db_url)
     name = project_name.strip()
     session = create_session(db_url, echo=log)
@@ -165,6 +177,8 @@ def add(
 )
 @click.argument("run_id", type=int)
 def get_info(db_url: str, run_id: int):
+    """Get run info
+    """
     set_db_url(db_url)
     session = create_session(db_url, echo=False)
     items = get_mypy_line_items_by_run_id(session=session, run_id=run_id)
@@ -183,6 +197,8 @@ def get_info(db_url: str, run_id: int):
 )
 @click.argument("project_name", type=str)
 def all(db_url: str, project_name: str):
+    """Display all the runs for the project.
+    """
     set_db_url(db_url)
     session = create_session(db_url, echo=False)
     project_name = project_name.strip()
@@ -212,10 +228,13 @@ def all(db_url: str, project_name: str):
     "--db-url", type=str, required=True, envvar="DB_URL", help=HELP_TEXT["db_url"]
 )
 def create_db(db_url: str):
+    """Create all the tables required for the project using alembic migrations.
+    """
     echo = os.getenv("DB_ECHO", False)
     set_db_url(db_url)
     engine = create_engine(db_url, echo=echo)
-    cfg = Config("alembic.ini")
+    path = (Path(__file__).parent / "alembic.ini").resolve()
+    cfg = Config(path)
     with engine.begin() as connection:
         cfg.attributes["connection"] = connection
         try:

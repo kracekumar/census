@@ -33,7 +33,7 @@ class Project(Base, Timestamp, IDMixin):
     description = sa.Column(sa.String, nullable=True, default="")
     url = sa.Column(URLType, default="")
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return (
             f"<Project(id={self.id}, name={self.name}, description={self.description})>"
         )
@@ -49,7 +49,7 @@ class Run(Base, Timestamp, IDMixin):
     project = relationship(Project)
     mypylineitems = relationship("MypyRunLineItem")
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"<Run(id={self.id}, project_name={self.project.name})"
 
 
@@ -66,7 +66,7 @@ class MypyRunLineItem(Base, Timestamp, IDMixin):
     project = relationship(Project)
     run = relationship(Run)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"<MyprRunLineItem(path={self.path}, loc={self.loc}, imprecision={self.imprecision})"
 
 
@@ -94,7 +94,7 @@ def add_run(session, project: Project, artifact_url: str, run_info: dict) -> Run
     return run
 
 
-def add_mypy_line_item(session, project: Project, run: Run, file_summary: FileSummary):
+def add_mypy_line_item(session, project: Project, run: Run, file_summary: FileSummary) -> MypyRunLineItem:
     item = MypyRunLineItem(
         project=project,
         run=run,

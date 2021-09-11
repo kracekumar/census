@@ -1,0 +1,5 @@
+site_name: Documentation for Code Census Project
+theme:
+  name: material
+markdown_extensions:
+  - mkdocs-click

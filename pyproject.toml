@@ -1,9 +1,10 @@
 [tool.poetry]
 name = "code_census"
-version = "0.0.2"
+version = "0.0.9"
 description = "A command line tool to collect, organize, report code metrics."
 authors = ["Kracekumar <me@kracekumar.com>"]
 license = "MIT"
+include = ["code_census/alembic.ini", "README.md"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -38,5 +39,3 @@ docs_build = "mkdocs build"
 census = "code_census.cli:cli"
 code_census = "code_census.cli:cli"
 
-[tool.poetry]
-include = ["alembic.ini", "alembic"]
