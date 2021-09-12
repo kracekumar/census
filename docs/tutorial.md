@@ -37,7 +37,7 @@ The `psql` successfully logged in the database and database is empty.
 
 You can access `code_census` CLI interface via `census` or `code_census` command.
 
-``` bash
+```
 $census
 Usage: census [OPTIONS] COMMAND [ARGS]...
 
@@ -52,7 +52,10 @@ Commands:
 
 `census` command help section shows three commands, let's run `create-db` to create tables.
 
+<mark>
 *Note*: `create-db` does not create a new database but creates tables.
+</mark>
+
 
 To create tables you need to pass the database credentials.
 
@@ -82,7 +85,9 @@ census=# \dt
  public | run             | table | user
 (4 rows)
 ```
+<mark>
 *Note*: Wherever you're using `--db-url`, the same argument can be passed as environment variable `DB_URL`.
+</mark>
 
 ### Create a new project
 
@@ -143,7 +148,9 @@ $census project all --db-url postgresql://:@localhost:5432/census
 
 ### Upload mypy run report
 
+<mark>
 *Note*: mypy report can be generated using `--html-report` flag like `mypy --config-file=pyproject.toml . --html-report /tmp/code_census`
+</mark>
 
 ``` bash
 $census --help
@@ -368,4 +375,6 @@ Now you can create more questions and add to the dashboard and have a view of yo
 ![Dashboard View](images/metabase/11-dashboard-view.png)
 
 
-*Note*: All the screenshots are taken from the metabase Mac App, the interface and menus may look different.
+<mark>
+**Note**: All the screenshots are taken from the metabase Mac App, the interface and menus may look different in the web UI.
+</mark>
