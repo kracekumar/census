@@ -690,7 +690,7 @@ Did not find any relations.
 <h2 id="2-fill-the-database">2. Fill the database</h2>
 <h3 id="create-tables">Create tables</h3>
 <p>You can access <code>code_census</code> CLI interface via <code>census</code> or <code>code_census</code> command.</p>
-<pre><code class="language-bash">$census
+<pre><code>$census
 Usage: census [OPTIONS] COMMAND [ARGS]...
 
 Options:
@@ -702,7 +702,9 @@ Commands:
   project
 </code></pre>
 <p><code>census</code> command help section shows three commands, let's run <code>create-db</code> to create tables.</p>
-<p><em>Note</em>: <code>create-db</code> does not create a new database but creates tables.</p>
+<p><mark>
+<em>Note</em>: <code>create-db</code> does not create a new database but creates tables.
+</mark></p>
 <p>To create tables you need to pass the database credentials.</p>
 <pre><code class="language-bash">$census create-db --db-url postgresql://:@localhost:5432/census
 INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
@@ -726,7 +728,9 @@ census=# \dt
  public | run             | table | user
 (4 rows)
 </code></pre>
-<p><em>Note</em>: Wherever you're using <code>--db-url</code>, the same argument can be passed as environment variable <code>DB_URL</code>.</p>
+<p><mark>
+<em>Note</em>: Wherever you're using <code>--db-url</code>, the same argument can be passed as environment variable <code>DB_URL</code>.
+</mark></p>
 <h3 id="create-a-new-project">Create a new project</h3>
 <p>Let's see project command documentation.</p>
 <pre><code class="language-bash">$census project --help
@@ -770,7 +774,9 @@ Project created. project=&lt;Project(id=2, name=code_census, description=A CLI t
 </code></pre>
 <p><code>all</code> sub-command displays all the projects.</p>
 <h3 id="upload-mypy-run-report">Upload mypy run report</h3>
-<p><em>Note</em>: mypy report can be generated using <code>--html-report</code> flag like <code>mypy --config-file=pyproject.toml . --html-report /tmp/code_census</code></p>
+<p><mark>
+<em>Note</em>: mypy report can be generated using <code>--html-report</code> flag like <code>mypy --config-file=pyproject.toml . --html-report /tmp/code_census</code>
+</mark></p>
 <pre><code class="language-bash">$census --help
 Usage: census [OPTIONS] COMMAND [ARGS]...
 
@@ -921,7 +927,9 @@ You will see the results with two columns <code>run_id, imprecision</code>.</p>
 <p>Finally dashboard contains one question.</p>
 <p>Now you can create more questions and add to the dashboard and have a view of your project!</p>
 <p><img alt="Dashboard View" src="../images/metabase/11-dashboard-view.png" /></p>
-<p><em>Note</em>: All the screenshots are taken from the metabase Mac App, the interface and menus may look different.</p>
+<p><mark>
+<strong>Note</strong>: All the screenshots are taken from the metabase Mac App, the interface and menus may look different in the web UI.
+</mark></p>
                 
               
               
