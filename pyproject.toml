@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "code_census"
-version = "0.0.13"
+version = "0.0.14"
 description = "A command line tool to collect, organize, report code metrics."
 authors = ["Kracekumar <me@kracekumar.com>"]
 license = "MIT"
@@ -19,7 +19,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.9"
-click = "tortoise-orm[asyncpg]"
+click = ">= 7.1.2"
 SQLAlchemy = "1.4.0"
 alembic = "^1.6.5"
 psycopg2 = "^2.9.1"
@@ -37,6 +37,8 @@ mkdocs = "^1.2.2"
 mkdocs-material = "^7.2.6"
 mkdocs-click = "^0.4.0"
 pre-commit = "^2.15.0"
+ipython = "^7.27.0"
+pytest = "^6.2.5"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
