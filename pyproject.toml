@@ -12,8 +12,8 @@ documentation = "https://kracekumar.github.io/code_census/"
 keywords = ["CLI", "mypy", "developer-tools", "code-quality", "metrics"]
 classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
-    "Topic :: Programming Language :: Python :: 3.9",
-    "Topic :: Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
 ]
 
 [tool.poetry.urls]
