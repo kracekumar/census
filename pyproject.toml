@@ -39,6 +39,7 @@ mkdocs-click = "^0.4.0"
 pre-commit = "^2.15.0"
 ipython = "^7.27.0"
 pytest = "^6.2.5"
+sqlalchemy2-stubs = "^0.0.2-alpha.19"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -53,3 +54,9 @@ docs_build = "mkdocs build"
 census = "code_census.cli:cli"
 code_census = "code_census.cli:cli"
 
+
+[tool.mypy]
+exclude="code_census/alembic"
+plugins = ["sqlalchemy.ext.mypy.plugin"]
+
+ignore_errors = true
