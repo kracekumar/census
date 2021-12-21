@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "code_census"
-version = "0.0.15"
+version = "0.0.16"
 description = "A command line tool to collect, organize, report code metrics."
 authors = ["Kracekumar <me@kracekumar.com>"]
 license = "MIT"
@@ -27,7 +27,7 @@ alembic = "^1.6.5"
 psycopg2 = "^2.9.1"
 SQLAlchemy-Utils = "^0.37.8"
 rich = "^10.7.0"
-mypy = "^0.910"
+mypy = ">= 0.910"
 beautifulsoup4 = "^4.9.3"
 lxml = "^4.6.3"
 
